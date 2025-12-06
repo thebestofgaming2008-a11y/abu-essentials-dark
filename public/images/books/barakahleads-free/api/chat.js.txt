@@ -1,0 +1,81 @@
+// FREE Vercel serverless function
+// This runs on Vercel's free tier (unlimited requests!)
+
+export default async function handler(req, res) {
+  // Enable CORS
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  
+  if (req.method === 'OPTIONS') {
+    return res.status(200).end();
+  }
+  
+  if (req.method !== 'POST') {
+    return res.status(405).json({ error: 'Method not allowed' });
+  }
+
+  try {
+    const { message, business_info, conversation_history } = req.body;
+
+    // Call Groq API (FREE!)
+    const groqResponse = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Authorization': `Bearer ${process.env.GROQ_API_KEY}`,
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        model: 'llama-3.1-70b-versatile',  // Best free model
+        messages: [
+          {
+            role: 'system',
+            content: `You are a friendly customer service chatbot.
+
+Business Information:
+${business_info}
+
+Your job:
+1. Answer customer questions about the business
+2. Be warm and conversational
+3. Keep responses SHORT (2-3 sentences)
+4. If customer seems interested, offer to collect their contact info
+
+Sound like a real person, not a robot.`
+          },
+          ...conversation_history,
+          {
+            role: 'user',
+            content: message
+          }
+        ],
+        temperature: 0.7,
+        max_tokens: 300
+      })
+    });
+
+    const data = await groqResponse.json();
+    const aiResponse = data.choices[0].message.content;
+
+    // Detect if should collect lead
+    const messageLower = message.toLowerCase();
+    let action = 'continue';
+    
+    if (messageLower.includes('call') || messageLower.includes('contact') || 
+        messageLower.includes('interested') || messageLower.includes('book')) {
+      action = 'collect_lead';
+    }
+
+    return res.status(200).json({
+      response: aiResponse,
+      action: action
+    });
+
+  } catch (error) {
+    console.error('Error:', error);
+    return res.status(500).json({ 
+      error: 'Failed to generate response',
+      response: 'Sorry, I\'m having trouble right now. Please try again!'
+    });
+  }
+}

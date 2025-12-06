@@ -1,0 +1,1431 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abu Hurayrah Essentials - Homepage Sections</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+            background-color: #0a0e14;
+            color: #f9fafb;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ============================================
+           HERO SECTION 
+            - Change headline text in the <h1> tag
+            - Change subtitle text in the <p> tag
+            - Change button text and links in the buttons
+            ============================================ */
+        
+        /* ============================================
+           NEWSLETTER SECTION 
+           ============================================ */
+        .newsletter-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 80px 20px;
+            margin: 80px 0;
+        }
+
+        .newsletter-content {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .newsletter-content h2 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .newsletter-content p {
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            opacity: 0.95;
+        }
+
+        .newsletter-form {
+            display: flex;
+            gap: 1rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+
+        .newsletter-form button {
+            padding: 1rem 2rem;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .newsletter-form button:hover {
+            transform: translateY(-2px);
+        }
+
+        .hero-section {
+            position: relative;
+            padding: 100px 20px;
+            overflow: hidden;
+            background: radial-gradient(ellipse at top, rgba(59, 130, 246, 0.2), #0a0e14);
+            text-align: center;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 6px 16px;
+            margin-bottom: 20px;
+            background: rgba(59, 130, 246, 0.2);
+            border: 1px solid rgba(59, 130, 246, 0.3);
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+        }
+
+        .hero-section h1 {
+            font-size: 48px;
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 24px;
+        }
+
+        .hero-gradient-text {
+            background: linear-gradient(135deg, #3b82f6, rgba(59, 130, 246, 0.6));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+        }
+
+        .hero-section p {
+            font-size: 20px;
+            color: #9ca3af;
+            margin-bottom: 32px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            padding: 14px 32px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            box-shadow: 0 0 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .btn-primary:hover {
+            background: #2563eb;
+            transform: translateY(-2px);
+            box-shadow: 0 0 50px rgba(59, 130, 246, 0.25);
+        }
+
+        .btn-outline {
+            padding: 14px 32px;
+            background: transparent;
+            color: #f9fafb;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-outline:hover {
+            background: rgba(59, 130, 246, 0.1);
+            border-color: #3b82f6;
+        }
+
+        /* ============================================
+           TRUST FEATURES SECTION 
+           - Change icon SVGs if needed
+           - Change titles and descriptions in HTML
+           ============================================ */
+        .trust-section {
+            padding: 48px 20px;
+            border-top: 1px solid #374151;
+            border-bottom: 1px solid #374151;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 48px;
+            text-align: center;
+        }
+
+        .trust-item svg {
+            width: 32px;
+            height: 32px;
+            margin: 0 auto 12px;
+            color: #3b82f6;
+        }
+
+        .trust-item h4 {
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+
+        .trust-item p {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        /* ============================================
+           CATEGORIES SECTION 
+           - Replace image URLs in the <img> tags
+           - Change category names and descriptions
+           - Add links to buttons
+           ============================================ */
+        .categories-section {
+            padding: 80px 20px;
+        }
+
+        .categories-section h2 {
+            font-size: 36px;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .categories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 32px;
+        }
+
+        .category-card {
+            background: #1a1f2e;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+
+        .category-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-4px);
+        }
+
+        .category-image {
+            position: relative;
+            width: 100%;
+            padding-top: 75%; /* 4:3 aspect ratio */
+            overflow: hidden;
+        }
+
+        .category-image img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .category-card:hover .category-image img {
+            transform: scale(1.1);
+        }
+
+        .category-content {
+            padding: 24px;
+        }
+
+        .category-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+        }
+
+        .category-header svg {
+            width: 20px;
+            height: 20px;
+            color: #3b82f6;
+        }
+
+        .category-header h3 {
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .category-content p {
+            color: #9ca3af;
+            margin-bottom: 16px;
+        }
+
+        .category-btn {
+            width: 100%;
+            padding: 12px 24px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .category-btn:hover {
+            background: #2563eb;
+            transform: scale(1.02);
+        }
+
+        /* ============================================
+           SLIDESHOW STYLES (Optional Enhancement)
+           Uncomment and use if you want a slideshow
+           ============================================ */
+        .slideshow-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 12px;
+            margin-bottom: 40px;
+        }
+
+        .slideshow-slide {
+            display: none;
+            width: 100%;
+            height: 100%;
+        }
+
+        .slideshow-slide.active {
+            display: block;
+        }
+
+        .slideshow-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slideshow-nav {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .slideshow-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .slideshow-dot.active {
+            background: #3b82f6;
+            width: 30px;
+            border-radius: 6px;
+        }
+
+        .slideshow-arrow {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0, 0, 0, 0.5);
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 20px;
+            transition: all 0.3s;
+        }
+
+        .slideshow-arrow:hover {
+            background: rgba(59, 130, 246, 0.8);
+        }
+
+        .slideshow-arrow.prev {
+            left: 20px;
+        }
+
+        .slideshow-arrow.next {
+            right: 20px;
+        }
+
+        /* ============================================
+           PRODUCT SHOWCASE STYLES 
+           ============================================ */
+        .products-section {
+            padding: 80px 20px;
+            background: linear-gradient(180deg, #0a0e14 0%, #1a1f2e 100%);
+        }
+
+        .products-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+
+        .products-header h2 {
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 8px;
+        }
+
+        .products-subtitle {
+            font-size: 18px;
+            color: #9ca3af;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 32px;
+        }
+
+        .product-card {
+            background: #1a1f2e;
+            border: 1px solid #374151;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s;
+        }
+
+        .product-card:hover {
+            border-color: rgba(59, 130, 246, 0.5);
+            transform: translateY(-4px);
+            box-shadow: 0 12px 40px rgba(59, 130, 246, 0.15);
+        }
+
+        .product-image-gallery {
+            position: relative;
+            width: 100%;
+            padding-top: 100%; /* Square aspect ratio */
+            overflow: hidden;
+            background: #0f1419;
+        }
+
+        .product-main-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .product-card:hover .product-main-image {
+            transform: scale(1.1);
+        }
+
+        /* Product Badge */
+        .product-badge {
+            position: absolute;
+            top: 12px;
+            right: 12px;
+            padding: 4px 12px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            z-index: 2;
+        }
+
+        .product-badge.bestseller {
+            background: #3b82f6;
+            color: white;
+        }
+
+        .product-badge.sale {
+            background: #ef4444;
+            color: white;
+        }
+
+        .product-badge.new {
+            background: #10b981;
+            color: white;
+        }
+
+        .product-badge.out-of-stock {
+            background: #6b7280;
+            color: white;
+        }
+
+        /* Thumbnail Gallery */
+        .product-thumbnails {
+            position: absolute;
+            bottom: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 8px;
+            z-index: 2;
+        }
+
+        .thumbnail {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 6px;
+            border: 2px solid transparent;
+            cursor: pointer;
+            transition: all 0.3s;
+            opacity: 0.6;
+        }
+
+        .thumbnail:hover,
+        .thumbnail.active {
+            opacity: 1;
+            border-color: #3b82f6;
+        }
+
+        /* Product Content */
+        .product-content {
+            padding: 20px;
+        }
+
+        .product-name {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #f9fafb;
+        }
+
+        .product-rating {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 8px;
+        }
+
+        .stars {
+            color: #fbbf24;
+            font-size: 14px;
+            letter-spacing: 2px;
+        }
+
+        .rating-count {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .product-description {
+            font-size: 14px;
+            color: #9ca3af;
+            margin-bottom: 16px;
+            line-height: 1.5;
+        }
+
+        .product-pricing {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        .product-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+
+        .product-price-original {
+            font-size: 18px;
+            color: #6b7280;
+            text-decoration: line-through;
+        }
+
+        /* Product Options */
+        .product-options {
+            margin-bottom: 16px;
+        }
+
+        .product-options label {
+            display: block;
+            font-size: 14px;
+            font-weight: 600;
+            margin-bottom: 8px;
+            color: #f9fafb;
+        }
+
+        .product-select {
+            width: 100%;
+            padding: 10px 12px;
+            background: #0f1419;
+            color: #f9fafb;
+            border: 1px solid #374151;
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .product-select:hover {
+            border-color: #3b82f6;
+        }
+
+        .product-select:focus {
+            outline: none;
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+        }
+
+        /* Add to Cart Button */
+        .add-to-cart-btn {
+            width: 100%;
+            padding: 14px 24px;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .add-to-cart-btn svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        .add-to-cart-btn:hover:not(:disabled) {
+            background: #2563eb;
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(59, 130, 246, 0.3);
+        }
+
+        .add-to-cart-btn:active:not(:disabled) {
+            transform: scale(0.98);
+        }
+
+        .add-to-cart-btn:disabled {
+            background: #6b7280;
+            cursor: not-allowed;
+            opacity: 0.5;
+        }
+
+        /* Loading state for add to cart */
+        .add-to-cart-btn.loading {
+            pointer-events: none;
+        }
+
+        .add-to-cart-btn.loading::after {
+            content: '';
+            width: 16px;
+            height: 16px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 0.6s linear infinite;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero-section h1 {
+                font-size: 32px;
+            }
+
+            .hero-section p {
+                font-size: 16px;
+            }
+
+            .categories-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 24px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+                gap: 24px;
+            }
+
+            .product-thumbnails {
+                gap: 6px;
+            }
+
+            .thumbnail {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-section {
+                padding: 60px 20px;
+            }
+
+            .hero-buttons {
+                flex-direction: column;
+            }
+
+            .btn-primary, .btn-outline {
+                width: 100%;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .products-section {
+                padding: 60px 20px;
+            }
+
+            .products-header h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ============================================
+         HERO SECTION
+         TO EDIT:
+         1. Change "Premium Islamic Essentials" text
+         2. Change subtitle text
+         3. Change button text
+         4. Add your links to href="#your-page-url"
+         ============================================ -->
+    <section class="hero-section">
+        <div class="container">
+            <span class="hero-badge">Trusted by 10,000+ Customers</span>
+            <h1>
+                Premium Islamic
+                <span class="hero-gradient-text">Essentials</span>
+            </h1>
+            <p>Discover authentic clothing, luxury treasures, and sacred knowledge</p>
+            <div class="hero-buttons">
+                <!-- CHANGE THESE LINKS TO YOUR ACTUAL PAGES -->
+                <a href="#shop" class="btn-primary">Shop Now</a>
+                <a href="#collections" class="btn-outline">View Collections</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         TRUST FEATURES SECTION
+         TO EDIT:
+         1. Change titles (e.g., "International Shipping")
+         2. Change descriptions
+         3. Replace SVG icons if needed
+         ============================================ -->
+    <section class="trust-section">
+        <div class="container">
+            <div class="trust-grid">
+                <!-- Feature 1: International Shipping -->
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <h4>International Shipping</h4>
+                    <p>Worldwide delivery available</p>
+                </div>
+
+                <!-- Feature 2: Multiple Payment Methods -->
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z" />
+                    </svg>
+                    <h4>Multiple Payment Methods</h4>
+                    <p>Pay your way securely</p>
+                </div>
+
+                <!-- Feature 3: Instagram Support -->
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z" />
+                    </svg>
+                    <h4>Instagram Support</h4>
+                    <p>DM us for quick help</p>
+                </div>
+
+                <!-- Feature 4: Quality Guaranteed -->
+                <div class="trust-item">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
+                    </svg>
+                    <h4>Quality Guaranteed</h4>
+                    <p>Premium authentic products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         OPTIONAL: SLIDESHOW SECTION
+         TO USE:
+         1. Uncomment this section
+         2. Add your image URLs
+         3. The JavaScript at the bottom makes it work
+         ============================================ -->
+    <!-- 
+    <section style="padding: 80px 20px 40px;">
+        <div class="container">
+            <h2 style="text-align: center; font-size: 36px; margin-bottom: 40px;">Featured Collections</h2>
+            
+            <div class="slideshow-container">
+                <div class="slideshow-slide active">
+                    <img src="YOUR-IMAGE-URL-1.jpg" alt="Slide 1">
+                </div>
+                <div class="slideshow-slide">
+                    <img src="YOUR-IMAGE-URL-2.jpg" alt="Slide 2">
+                </div>
+                <div class="slideshow-slide">
+                    <img src="YOUR-IMAGE-URL-3.jpg" alt="Slide 3">
+                </div>
+                
+                <button class="slideshow-arrow prev" onclick="changeSlide(-1)">‹</button>
+                <button class="slideshow-arrow next" onclick="changeSlide(1)">›</button>
+                
+                <div class="slideshow-nav">
+                    <span class="slideshow-dot active" onclick="currentSlide(0)"></span>
+                    <span class="slideshow-dot" onclick="currentSlide(1)"></span>
+                    <span class="slideshow-dot" onclick="currentSlide(2)"></span>
+                </div>
+            </div>
+        </div>
+    </section>
+    -->
+
+    <!-- ============================================
+         CATEGORIES SECTION
+         TO EDIT:
+         1. Replace image src with your own images
+         2. Change category names (Clothing, Luxury Items, Books)
+         3. Change descriptions
+         4. Add links to category buttons href="#your-category-page"
+         ============================================ -->
+    <section class="categories-section">
+        <div class="container">
+            <h2>Our Collections</h2>
+            <div class="categories-grid">
+                
+                <!-- Category 1: Clothing -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <!-- REPLACE THIS IMAGE URL WITH YOUR OWN -->
+                        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=800&auto=format&fit=crop" alt="Clothing">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                            <h3>Clothing</h3>
+                        </div>
+                        <p>Premium Islamic apparel</p>
+                        <!-- CHANGE THIS LINK TO YOUR CATEGORY PAGE -->
+                        <a href="#clothing" class="category-btn">Browse Collection</a>
+                    </div>
+                </div>
+
+                <!-- Category 2: Luxury Items -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <!-- REPLACE THIS IMAGE URL WITH YOUR OWN -->
+                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=800&auto=format&fit=crop" alt="Luxury Items">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                            </svg>
+                            <h3>Luxury Items</h3>
+                        </div>
+                        <p>Honey, Saffron & Musk</p>
+                        <!-- CHANGE THIS LINK TO YOUR CATEGORY PAGE -->
+                        <a href="#luxury" class="category-btn">Browse Collection</a>
+                    </div>
+                </div>
+
+                <!-- Category 3: Books -->
+                <div class="category-card">
+                    <div class="category-image">
+                        <!-- REPLACE THIS IMAGE URL WITH YOUR OWN -->
+                        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=800&auto=format&fit=crop" alt="Books">
+                    </div>
+                    <div class="category-content">
+                        <div class="category-header">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                            <h3>Books</h3>
+                        </div>
+                        <p>Islamic knowledge & literature</p>
+                        <!-- CHANGE THIS LINK TO YOUR CATEGORY PAGE -->
+                        <a href="#books" class="category-btn">Browse Collection</a>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Section -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-content">
+                <h2>Stay Updated</h2>
+                <p>Subscribe to our newsletter for exclusive offers and Islamic insights</p>
+                <form class="newsletter-form">
+                    <input type="email" placeholder="Enter your email" required>
+                    <button type="submit">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         PRODUCT SHOWCASE SECTION WITH WOOCOMMERCE
+         TO EDIT:
+         1. Replace product images with your own
+         2. Update product names and prices
+         3. Add WooCommerce product IDs in data-product-id
+         4. Change product descriptions
+         5. Add sale badges where needed
+         ============================================ -->
+    <section class="products-section">
+        <div class="container">
+            <div class="products-header">
+                <h2>Featured Products</h2>
+                <p class="products-subtitle">Discover our most popular items</p>
+            </div>
+            
+            <div class="products-grid">
+                
+                <!-- Product 1 -->
+                <div class="product-card" data-product-id="123">
+                    <div class="product-image-gallery">
+                        <!-- Main Product Image - REPLACE WITH YOUR IMAGE -->
+                        <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=600&auto=format&fit=crop" alt="Premium Thobe" class="product-main-image">
+                        
+                        <!-- Product Badge (Optional - Remove if not needed) -->
+                        <span class="product-badge bestseller">Bestseller</span>
+                        
+                        <!-- Thumbnail Gallery (Optional - For multiple images) -->
+                        <div class="product-thumbnails">
+                            <img src="https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=100&auto=format&fit=crop" alt="Thobe view 1" class="thumbnail active">
+                            <img src="https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=100&auto=format&fit=crop" alt="Thobe view 2" class="thumbnail">
+                            <img src="https://images.unsplash.com/photo-1441984904996-e0b6ba687e04?w=100&auto=format&fit=crop" alt="Thobe view 3" class="thumbnail">
+                        </div>
+                    </div>
+                    
+                    <div class="product-content">
+                        <h3 class="product-name">Premium White Thobe</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(48 reviews)</span>
+                        </div>
+                        <p class="product-description">High-quality cotton thobe with elegant embroidery</p>
+                        
+                        <div class="product-pricing">
+                            <span class="product-price">$89.99</span>
+                            <!-- For sale items, uncomment below and add original price -->
+                            <!-- <span class="product-price-original">$119.99</span> -->
+                        </div>
+                        
+                        <!-- Product Options (Size, Color, etc.) -->
+                        <div class="product-options">
+                            <label for="size-123">Size:</label>
+                            <select id="size-123" class="product-select">
+                                <option value="">Select Size</option>
+                                <option value="small">Small</option>
+                                <option value="medium">Medium</option>
+                                <option value="large">Large</option>
+                                <option value="xl">X-Large</option>
+                            </select>
+                        </div>
+                        
+                        <!-- WOOCOMMERCE ADD TO CART BUTTON -->
+                        <!-- Replace '123' with your actual WooCommerce product ID -->
+                        <button class="add-to-cart-btn" onclick="addToCart(123)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 2 -->
+                <div class="product-card" data-product-id="124">
+                    <div class="product-image-gallery">
+                        <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=600&auto=format&fit=crop" alt="Premium Honey" class="product-main-image">
+                        <span class="product-badge sale">Sale</span>
+                        
+                        <div class="product-thumbnails">
+                            <img src="https://images.unsplash.com/photo-1608571423902-eed4a5ad8108?w=100&auto=format&fit=crop" alt="Honey view 1" class="thumbnail active">
+                            <img src="https://images.unsplash.com/photo-1587049352846-4a222e784587?w=100&auto=format&fit=crop" alt="Honey view 2" class="thumbnail">
+                        </div>
+                    </div>
+                    
+                    <div class="product-content">
+                        <h3 class="product-name">Organic Sidr Honey</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(92 reviews)</span>
+                        </div>
+                        <p class="product-description">Pure organic honey from Yemen, 500g jar</p>
+                        
+                        <div class="product-pricing">
+                            <span class="product-price">$49.99</span>
+                            <span class="product-price-original">$69.99</span>
+                        </div>
+                        
+                        <button class="add-to-cart-btn" onclick="addToCart(124)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 3 -->
+                <div class="product-card" data-product-id="125">
+                    <div class="product-image-gallery">
+                        <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=600&auto=format&fit=crop" alt="Islamic Book" class="product-main-image">
+                        <span class="product-badge new">New</span>
+                        
+                        <div class="product-thumbnails">
+                            <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?w=100&auto=format&fit=crop" alt="Book view 1" class="thumbnail active">
+                            <img src="https://images.unsplash.com/photo-1512820790803-83ca734da794?w=100&auto=format&fit=crop" alt="Book view 2" class="thumbnail">
+                        </div>
+                    </div>
+                    
+                    <div class="product-content">
+                        <h3 class="product-name">Sahih Bukhari Collection</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★★</span>
+                            <span class="rating-count">(156 reviews)</span>
+                        </div>
+                        <p class="product-description">Complete authentic hadith collection with commentary</p>
+                        
+                        <div class="product-pricing">
+                            <span class="product-price">$129.99</span>
+                        </div>
+                        
+                        <button class="add-to-cart-btn" onclick="addToCart(125)">
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                            </svg>
+                            Add to Cart
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Product 4 - Out of Stock Example -->
+                <div class="product-card" data-product-id="126">
+                    <div class="product-image-gallery">
+                        <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600&auto=format&fit=crop" alt="Prayer Mat" class="product-main-image">
+                        <span class="product-badge out-of-stock">Out of Stock</span>
+                    </div>
+                    
+                    <div class="product-content">
+                        <h3 class="product-name">Luxury Prayer Mat</h3>
+                        <div class="product-rating">
+                            <span class="stars">★★★★☆</span>
+                            <span class="rating-count">(34 reviews)</span>
+                        </div>
+                        <p class="product-description">Premium velvet prayer mat with gold embroidery</p>
+                        
+                        <div class="product-pricing">
+                            <span class="product-price">$79.99</span>
+                        </div>
+                        
+                        <button class="add-to-cart-btn" disabled>
+                            Out of Stock
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================
+         JAVASCRIPT FOR SLIDESHOW (Optional)
+         This makes the slideshow work automatically
+         ============================================ -->
+    <script>
+        // Slideshow functionality
+        let currentSlideIndex = 0;
+        let slideInterval;
+
+        function showSlide(index) {
+            const slides = document.querySelectorAll('.slideshow-slide');
+            const dots = document.querySelectorAll('.slideshow-dot');
+            
+            if (!slides.length) return;
+            
+            if (index >= slides.length) currentSlideIndex = 0;
+            if (index < 0) currentSlideIndex = slides.length - 1;
+            
+            slides.forEach(slide => slide.classList.remove('active'));
+            dots.forEach(dot => dot.classList.remove('active'));
+            
+            slides[currentSlideIndex].classList.add('active');
+            if (dots[currentSlideIndex]) {
+                dots[currentSlideIndex].classList.add('active');
+            }
+        }
+
+        function changeSlide(direction) {
+            currentSlideIndex += direction;
+            showSlide(currentSlideIndex);
+            resetSlideInterval();
+        }
+
+        function currentSlide(index) {
+            currentSlideIndex = index;
+            showSlide(currentSlideIndex);
+            resetSlideInterval();
+        }
+
+        function autoSlide() {
+            currentSlideIndex++;
+            showSlide(currentSlideIndex);
+        }
+
+        function resetSlideInterval() {
+            clearInterval(slideInterval);
+            slideInterval = setInterval(autoSlide, 5000); // Change slide every 5 seconds
+        }
+
+        // Start automatic slideshow
+        if (document.querySelector('.slideshow-container')) {
+            slideInterval = setInterval(autoSlide, 5000);
+        }
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href !== '#shop' && href !== '#collections' && 
+                    href !== '#clothing' && href !== '#luxury' && href !== '#books') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+
+        // ============================================
+        // WOOCOMMERCE ADD TO CART FUNCTIONALITY
+        // ============================================
+        
+        function addToCart(productId) {
+            const button = event.target.closest('.add-to-cart-btn');
+            
+            // Don't proceed if button is disabled
+            if (button.disabled) return;
+            
+            // Add loading state
+            button.classList.add('loading');
+            button.textContent = 'Adding...';
+            
+            // Get selected options (if any)
+            const card = button.closest('.product-card');
+            const sizeSelect = card.querySelector('.product-select');
+            const selectedSize = sizeSelect ? sizeSelect.value : '';
+            
+            // WOOCOMMERCE AJAX ADD TO CART
+            // This uses WordPress/WooCommerce's built-in AJAX functionality
+            const formData = new FormData();
+            formData.append('action', 'woocommerce_add_to_cart');
+            formData.append('product_id', productId);
+            
+            // Add variation/options if selected
+            if (selectedSize) {
+                formData.append('variation_id', selectedSize);
+                formData.append('quantity', 1);
+            }
+            
+            // Send AJAX request to WooCommerce
+            fetch(wc_add_to_cart_params.ajax_url || '/wp-admin/admin-ajax.php', {
+                method: 'POST',
+                body: formData,
+                credentials: 'same-origin'
+            })
+            .then(response => response.json())
+            .then(data => {
+                // Remove loading state
+                button.classList.remove('loading');
+                
+                if (data.error) {
+                    button.textContent = 'Error - Try Again';
+                    setTimeout(() => {
+                        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>Add to Cart';
+                    }, 2000);
+                } else {
+                    // Success!
+                    button.textContent = '✓ Added to Cart';
+                    button.style.background = '#10b981';
+                    
+                    // Update WooCommerce cart count if widget exists
+                    if (typeof wc_cart_fragments_params !== 'undefined') {
+                        jQuery(document.body).trigger('wc_fragment_refresh');
+                    }
+                    
+                    // Reset button after 2 seconds
+                    setTimeout(() => {
+                        button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>Add to Cart';
+                        button.style.background = '#3b82f6';
+                    }, 2000);
+                }
+            })
+            .catch(error => {
+                console.error('Error adding to cart:', error);
+                button.classList.remove('loading');
+                button.textContent = 'Error - Try Again';
+                setTimeout(() => {
+                    button.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" /></svg>Add to Cart';
+                }, 2000);
+            });
+        }
+
+        // Thumbnail gallery functionality
+        document.querySelectorAll('.thumbnail').forEach(thumb => {
+            thumb.addEventListener('click', function() {
+                const card = this.closest('.product-card');
+                const mainImage = card.querySelector('.product-main-image');
+                
+                // Remove active class from all thumbnails
+                card.querySelectorAll('.thumbnail').forEach(t => t.classList.remove('active'));
+                
+                // Add active class to clicked thumbnail
+                this.classList.add('active');
+                
+                // Change main image
+                mainImage.src = this.src.replace('w=100', 'w=600');
+            });
+        });
+    </script>
+
+</body>
+</html>
+
+<!-- 
+============================================
+HOW TO USE THIS CODE IN WORDPRESS ELEMENTOR:
+============================================
+
+1. COPY THE ENTIRE CODE ABOVE
+
+2. IN WORDPRESS ELEMENTOR:
+   - Drag an "HTML" widget to your page
+   - Paste this entire code into the HTML widget
+   - The code will work immediately!
+
+3. TO CHANGE IMAGES:
+   - Find lines that say "REPLACE THIS IMAGE URL"
+   - Upload your image to WordPress Media Library
+   - Copy the image URL
+   - Replace the URL in the code
+
+4. TO CHANGE TEXT:
+   - Find the section you want to change
+   - Look for comments like "TO EDIT:"
+   - Change the text directly in the HTML
+
+5. TO MAKE BUTTONS WORK:
+   - Find href="#shop" or href="#clothing" etc.
+   - Replace with your actual page URLs
+   - Example: href="https://yoursite.com/shop"
+
+6. TO ADD SLIDESHOW:
+   - Uncomment the slideshow section (remove <!-- and -->)
+   - Add 3-5 image URLs
+   - The JavaScript will make it work automatically
+   - It auto-plays every 5 seconds
+
+7. COLORS ARE ALREADY SET:
+   - Background: Dark (#0a0e14)
+   - Primary Blue: #3b82f6
+   - Text: White (#f9fafb)
+   - To change colors, search for these hex codes and replace
+
+8. FULLY RESPONSIVE:
+   - Works on mobile, tablet, and desktop automatically
+   - No extra configuration needed!
+
+============================================
+QUICK REFERENCE - WHERE TO CHANGE THINGS:
+============================================
+
+HERO SECTION (Lines 140-170):
+- Headline: Line 151-153
+- Subtitle: Line 154
+- Button text: Lines 157-158
+- Button links: Lines 157-158 (href="#...")
+
+TRUST FEATURES (Lines 184-230):
+- Feature 1: Lines 186-192
+- Feature 2: Lines 195-201
+- Feature 3: Lines 204-210
+- Feature 4: Lines 213-219
+
+CATEGORIES (Lines 284-370):
+- Category 1 Image: Line 292
+- Category 1 Name: Line 298
+- Category 1 Description: Line 300
+- Category 1 Button: Line 302
+
+- Category 2 Image: Line 310
+- Category 2 Name: Line 316
+- Category 2 Description: Line 318
+- Category 2 Button: Line 320
+
+- Category 3 Image: Line 328
+- Category 3 Name: Line 334
+- Category 3 Description: Line 336
+- Category 3 Button: Line 338
+
+============================================
+PRODUCT SHOWCASE SECTION - WOOCOMMERCE INTEGRATION:
+============================================
+
+**IMPORTANT: TO MAKE ADD TO CART BUTTONS WORK:**
+
+1. **Get WooCommerce Product IDs:**
+   - Go to WordPress Admin > Products
+   - Click on a product to edit it
+   - Look at the URL: yoursite.com/wp-admin/post.php?post=123&action=edit
+   - The number "123" is your Product ID
+   - Copy this ID for each product
+
+2. **Update Product IDs in Code:**
+   - Find: data-product-id="123"
+   - Replace "123" with your actual WooCommerce product ID
+   - Also update the onclick="addToCart(123)" with the same ID
+
+3. **Replace Product Images:**
+   - Upload your product images to WordPress Media Library
+   - Copy the image URLs
+   - Replace the placeholder Unsplash URLs with your images
+   - For thumbnails: add multiple views of the same product
+
+4. **Update Product Information:**
+   - Product Name: Change in <h3 class="product-name">
+   - Price: Update in <span class="product-price">
+   - Description: Edit <p class="product-description">
+   - Reviews: Change rating and count
+
+5. **Product Badges:**
+   - Bestseller: <span class="product-badge bestseller">Bestseller</span>
+   - Sale: <span class="product-badge sale">Sale</span>
+   - New: <span class="product-badge new">New</span>
+   - Out of Stock: <span class="product-badge out-of-stock">Out of Stock</span>
+   - Remove badge span if not needed
+
+6. **For Sale Items:**
+   - Uncomment the original price line
+   - Add: <span class="product-price-original">$119.99</span>
+   - This shows crossed-out original price
+
+7. **Product Options (Size, Color, etc.):**
+   - Keep the select dropdown for products with variations
+   - Remove it for products without options
+   - Update option values to match your WooCommerce variations
+
+8. **Add More Products:**
+   - Copy any product card div (from <div class="product-card"> to </div>)
+   - Paste it inside the products-grid
+   - Update all information and IDs
+
+9. **WooCommerce Integration Notes:**
+   - The code uses WooCommerce's built-in AJAX system
+   - No additional plugins needed
+   - Works with WooCommerce cart widgets
+   - Automatically updates cart count
+   - Handles variations and product options
+
+10. **Testing:**
+    - Make sure WooCommerce is installed and activated
+    - Create products in WooCommerce first
+    - Test "Add to Cart" buttons
+    - Check that cart count updates
+    - Verify cart page shows added products
+
+11. **Troubleshooting:**
+    - If buttons don't work, check Product IDs are correct
+    - Ensure WooCommerce is activated
+    - Check browser console for errors (F12 > Console)
+    - Verify product is "In Stock" in WooCommerce
+
+12. **Customization:**
+    - Grid Layout: Change grid-template-columns in .products-grid
+    - Colors: Search for #3b82f6 (blue) and replace
+    - Card Size: Adjust minmax(280px, 1fr) in products-grid
+    - Spacing: Change gap: 32px in products-grid
+
+-->
