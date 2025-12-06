@@ -27,6 +27,7 @@ import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProductImage from "@/components/ui/product-image";
 import { useRef, useState, useEffect } from "react";
+import heroBooks from "@/assets/hero-books.png";
 
 const Index = () => {
   const { addToCart } = useCart();
@@ -150,7 +151,7 @@ const Index = () => {
         </div>
         
         <div className="container mx-auto relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
+          <div className="max-w-3xl mx-auto text-center mb-12">
             <Badge className="mb-4 bg-primary/20 text-primary border-primary/30 text-xs">
               Authentic Islamic Resources
             </Badge>
@@ -173,6 +174,37 @@ const Index = () => {
                   Learn About the Brand
                 </Button>
               </Link>
+            </div>
+          </div>
+          
+          {/* Hero Image Showcase */}
+          <div className="max-w-4xl mx-auto">
+            <div className="relative group">
+              {/* Decorative frame */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-primary/20 via-primary/10 to-primary/20 rounded-2xl blur-xl opacity-60 group-hover:opacity-80 transition-opacity duration-500" />
+              <div className="relative bg-card rounded-xl overflow-hidden shadow-2xl border border-primary/20">
+                <img 
+                  src={heroBooks} 
+                  alt="Tafseer As-Sa'di Complete 10 Volume Collection - Comprehensive Quran Commentary" 
+                  className="w-full h-auto object-cover"
+                />
+                {/* Overlay with book info */}
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background/95 via-background/70 to-transparent p-6 md:p-8">
+                  <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
+                    <div>
+                      <Badge className="mb-2 bg-primary text-primary-foreground">Featured Collection</Badge>
+                      <h3 className="text-xl md:text-2xl font-bold text-foreground">Tafseer As-Sa'di</h3>
+                      <p className="text-sm text-muted-foreground">Complete 10 Volume Quran Commentary</p>
+                    </div>
+                    <Link to="/shop?search=tafsir">
+                      <Button className="bg-primary text-primary-foreground hover:bg-primary/90 shadow-lg">
+                        View Collection
+                        <ArrowRight className="ml-2 h-4 w-4" />
+                      </Button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
