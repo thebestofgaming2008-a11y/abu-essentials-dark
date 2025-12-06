@@ -1,46 +1,46 @@
-@import url('https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Philosopher:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Philosopher:wght@400;700&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-/* Design System: Clean White theme with Gold accents matching the Abu Hurayrah logo */
+/* Design System: Clean White theme with Gold/Brown accents matching the Abu Hurayrah logo */
 
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 0 0% 8%;
+    --foreground: 30 20% 15%;
 
-    --card: 0 0% 99%;
-    --card-foreground: 0 0% 8%;
+    --card: 40 20% 98%;
+    --card-foreground: 30 20% 15%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 8%;
+    --popover-foreground: 30 20% 15%;
 
-    --primary: 45 90% 48%;
+    --primary: 35 60% 35%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 45 10% 96%;
-    --secondary-foreground: 0 0% 15%;
+    --secondary: 35 15% 94%;
+    --secondary-foreground: 30 20% 20%;
 
-    --muted: 45 8% 94%;
-    --muted-foreground: 0 0% 40%;
+    --muted: 35 10% 92%;
+    --muted-foreground: 30 10% 45%;
 
-    --accent: 45 90% 48%;
+    --accent: 35 60% 35%;
     --accent-foreground: 0 0% 100%;
 
     --destructive: 0 63% 45%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 45 10% 88%;
-    --input: 45 10% 88%;
-    --ring: 45 90% 48%;
+    --border: 35 15% 85%;
+    --input: 35 15% 85%;
+    --ring: 35 60% 35%;
 
     --radius: 0.5rem;
 
-    --gradient-gold: linear-gradient(135deg, hsl(45 90% 48%), hsl(40 85% 40%));
-    --gradient-premium: linear-gradient(135deg, hsl(0 0% 100%), hsl(45 10% 96%));
-    --shadow-gold: 0 0 40px hsl(45 90% 48% / 0.15);
+    --gradient-gold: linear-gradient(135deg, hsl(35 60% 35%), hsl(30 50% 28%));
+    --gradient-premium: linear-gradient(135deg, hsl(0 0% 100%), hsl(40 20% 96%));
+    --shadow-gold: 0 0 40px hsl(35 60% 35% / 0.15);
   }
 }
 
@@ -51,11 +51,11 @@
 
   body {
     @apply bg-background text-foreground;
-    font-family: 'Philosopher', serif;
+    font-family: 'Philosopher', sans-serif;
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Amiri', serif;
+    font-family: 'Philosopher', sans-serif;
     font-weight: 700;
   }
 }
