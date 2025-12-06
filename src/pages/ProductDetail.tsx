@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
 import { ShoppingCart, Star, ArrowLeft, Minus, Plus, Check, Heart } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,11 @@ const ProductDetail = () => {
   const [quantity, setQuantity] = useState(1);
   const [selectedSize, setSelectedSize] = useState<string | undefined>();
   const [selectedColor, setSelectedColor] = useState<string | undefined>();
+
+  // Scroll to top when product changes
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [id]);
 
   if (!product) {
     return (

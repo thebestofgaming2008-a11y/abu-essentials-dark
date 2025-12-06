@@ -16,7 +16,9 @@ import {
   Library,
   Sparkles,
   Shirt,
-  Gift
+  Gift,
+  ChevronLeft,
+  ChevronRight
 } from "lucide-react";
 import { products } from "@/data/products";
 import { useCart } from "@/contexts/CartContext";
@@ -24,25 +26,28 @@ import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProductImage from "@/components/ui/product-image";
+import { useRef, useState, useEffect } from "react";
 
 const Index = () => {
   const { addToCart } = useCart();
   const { toast } = useToast();
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const [isPaused, setIsPaused] = useState(false);
 
-  // Categories for the carousel (books + other products)
+  // Categories for the carousel - these map to search terms that match product content
   const categories = [
-    { name: "Tafsir", icon: BookOpen },
-    { name: "Hadith", icon: ScrollText },
-    { name: "Aqeedah", icon: Building2 },
-    { name: "Fiqh", icon: Scale },
-    { name: "Seerah", icon: Moon },
-    { name: "Women", icon: Users },
-    { name: "Children", icon: Baby },
-    { name: "Arabic", icon: Languages },
-    { name: "Urdu", icon: Library },
-    { name: "Spirituality", icon: Sparkles },
-    { name: "Clothing", icon: Shirt },
-    { name: "Gifts", icon: Gift },
+    { name: "Tafsir", icon: BookOpen, searchTerm: "tafsir" },
+    { name: "Hadith", icon: ScrollText, searchTerm: "hadith,sahih,bukhari,muslim,riyad" },
+    { name: "Aqeedah", icon: Building2, searchTerm: "aqeedah,tawhid,creed,wasitiyyah" },
+    { name: "Fiqh", icon: Scale, searchTerm: "fiqh,rulings,salah" },
+    { name: "Seerah", icon: Moon, searchTerm: "seerah,prophet,moon split" },
+    { name: "Women", icon: Users, searchTerm: "women,muslim women" },
+    { name: "Children", icon: Baby, searchTerm: "children,kids" },
+    { name: "Arabic", icon: Languages, searchTerm: "arabic,madinah" },
+    { name: "Urdu", icon: Library, searchTerm: "urdu" },
+    { name: "Spirituality", icon: Sparkles, searchTerm: "soul,heart,purification" },
+    { name: "Clothing", icon: Shirt, category: "clothing" },
+    { name: "Gifts", icon: Gift, category: "luxury" },
   ];
 
   // Bundle deals
@@ -105,6 +110,23 @@ const Index = () => {
     });
   };
 
+  const scrollCarousel = (direction: 'left' | 'right') => {
+    if (carouselRef.current) {
+      const scrollAmount = 300;
+      carouselRef.current.scrollBy({
+        left: direction === 'left' ? -scrollAmount : scrollAmount,
+        behavior: 'smooth'
+      });
+    }
+  };
+
+  const getCategoryLink = (category: typeof categories[0]) => {
+    if (category.category) {
+      return `/shop?category=${category.category}`;
+    }
+    return `/shop?search=${encodeURIComponent(category.searchTerm)}`;
+  };
+
   return (
     <div className="min-h-screen bg-background flex flex-col">
       <Header />
@@ -133,22 +155,22 @@ const Index = () => {
               Authentic Islamic Resources
             </Badge>
             <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold mb-6 leading-tight tracking-tight">
-              Illuminate Your Path
-              <span className="block text-primary mt-2">With Sacred Knowledge</span>
+              Islamic Essentials
+              <span className="block text-primary mt-2">for Daily Life</span>
             </h1>
             <p className="text-lg md:text-xl text-muted-foreground mb-8 max-w-2xl mx-auto leading-relaxed">
-              Premium Islamic books, elegant clothing & meaningful gifts — curated from trusted sources for the discerning Muslim
+              Rooted in the Sunnah. Chosen with care. Built to serve your worship, knowledge, and everyday practice.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link to="/shop">
                 <Button size="lg" className="bg-primary text-primary-foreground hover:bg-primary/90 px-8 shadow-lg shadow-primary/20">
-                  Explore Collection
+                  Explore Essentials
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
-              <Link to="/shop?category=books">
+              <Link to="/contact">
                 <Button size="lg" variant="outline" className="border-primary/50 text-primary hover:bg-primary/10 px-8">
-                  Browse Books
+                  Learn About the Brand
                 </Button>
               </Link>
             </div>
@@ -222,26 +244,50 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Categories Carousel - Infinite Scroll */}
+      {/* Categories Carousel with Arrows */}
       <section className="py-12 px-4 overflow-hidden bg-secondary/30">
         <div className="container mx-auto mb-8">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-2">Browse by Category</h2>
           <p className="text-muted-foreground text-center text-sm">Find exactly what you're looking for</p>
         </div>
-        <div className="relative max-w-6xl mx-auto overflow-hidden">
+        <div className="relative max-w-6xl mx-auto">
+          {/* Left Arrow */}
+          <button
+            onClick={() => scrollCarousel('left')}
+            className="absolute left-0 top-1/2 -translate-y-1/2 z-20 bg-background/90 hover:bg-background border border-border rounded-full p-2 shadow-lg transition-all hover:scale-110"
+            aria-label="Scroll left"
+          >
+            <ChevronLeft className="h-6 w-6 text-primary" />
+          </button>
+
+          {/* Right Arrow */}
+          <button
+            onClick={() => scrollCarousel('right')}
+            className="absolute right-0 top-1/2 -translate-y-1/2 z-20 bg-background/90 hover:bg-background border border-border rounded-full p-2 shadow-lg transition-all hover:scale-110"
+            aria-label="Scroll right"
+          >
+            <ChevronRight className="h-6 w-6 text-primary" />
+          </button>
+
           {/* Gradient fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-16 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-16 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-8 top-0 bottom-0 w-16 bg-gradient-to-r from-secondary/30 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-8 top-0 bottom-0 w-16 bg-gradient-to-l from-secondary/30 to-transparent z-10 pointer-events-none" />
           
-          {/* Infinite scrolling container */}
-          <div className="flex animate-infinite-scroll w-max">
-            {[...categories, ...categories, ...categories, ...categories].map((category, index) => {
+          {/* Scrolling container with manual control */}
+          <div 
+            ref={carouselRef}
+            className="flex gap-4 overflow-x-auto scrollbar-hide px-12 py-4"
+            style={{ scrollBehavior: 'smooth' }}
+            onMouseEnter={() => setIsPaused(true)}
+            onMouseLeave={() => setIsPaused(false)}
+          >
+            {categories.map((category, index) => {
               const IconComponent = category.icon;
               return (
                 <Link 
                   key={index} 
-                  to={`/shop?search=${category.name.toLowerCase()}`}
-                  className="flex-shrink-0 mx-2"
+                  to={getCategoryLink(category)}
+                  className="flex-shrink-0"
                 >
                   <Card className="w-28 h-28 md:w-32 md:h-32 flex flex-col items-center justify-center gap-2 border-border hover:border-primary hover:bg-primary/5 transition-all duration-300 cursor-pointer group bg-card shadow-sm">
                     <IconComponent className="h-8 w-8 md:h-10 md:w-10 text-primary group-hover:scale-110 transition-transform duration-300" />

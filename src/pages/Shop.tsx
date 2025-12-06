@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useSearchParams } from "react-router-dom";
 import { ShoppingCart, Star, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,17 +13,59 @@ import Footer from "@/components/layout/Footer";
 import ProductImage from "@/components/ui/product-image";
 
 const Shop = () => {
+  const [searchParams, setSearchParams] = useSearchParams();
   const [selectedCategory, setSelectedCategory] = useState("all");
   const [searchQuery, setSearchQuery] = useState("");
   const { addToCart } = useCart();
   const { toast } = useToast();
 
+  // Sync URL params with state
+  useEffect(() => {
+    const categoryParam = searchParams.get("category");
+    const searchParam = searchParams.get("search");
+    
+    if (categoryParam) {
+      setSelectedCategory(categoryParam);
+      setSearchQuery("");
+    } else if (searchParam) {
+      setSearchQuery(searchParam);
+      setSelectedCategory("all");
+    }
+  }, [searchParams]);
+
   const filteredProducts = products.filter((product) => {
     const matchesCategory = selectedCategory === "all" || product.category === selectedCategory;
-    const matchesSearch = product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         product.description.toLowerCase().includes(searchQuery.toLowerCase());
-    return matchesCategory && matchesSearch;
+    
+    // Handle search with multiple terms (comma-separated)
+    if (searchQuery) {
+      const searchTerms = searchQuery.toLowerCase().split(',').map(t => t.trim());
+      const productText = `${product.name} ${product.description} ${product.category}`.toLowerCase();
+      const matchesSearch = searchTerms.some(term => productText.includes(term));
+      return matchesSearch;
+    }
+    
+    return matchesCategory;
   });
+
+  const handleCategoryChange = (categoryId: string) => {
+    setSelectedCategory(categoryId);
+    setSearchQuery("");
+    if (categoryId === "all") {
+      setSearchParams({});
+    } else {
+      setSearchParams({ category: categoryId });
+    }
+  };
+
+  const handleSearchChange = (value: string) => {
+    setSearchQuery(value);
+    if (value.trim()) {
+      setSearchParams({ search: value });
+      setSelectedCategory("all");
+    } else {
+      setSearchParams({});
+    }
+  };
 
   const handleAddToCart = (product: typeof products[0]) => {
     if (!product.inStock) return;
@@ -32,6 +74,12 @@ const Shop = () => {
       title: "Added to cart",
       description: `${product.name} has been added to your cart.`,
     });
+  };
+
+  const clearFilters = () => {
+    setSearchQuery("");
+    setSelectedCategory("all");
+    setSearchParams({});
   };
 
   return (
@@ -54,7 +102,7 @@ const Shop = () => {
                 placeholder="Search books, clothing, luxury items..."
                 className="pl-10 h-12"
                 value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
+                onChange={(e) => handleSearchChange(e.target.value)}
               />
             </div>
           </div>
@@ -74,7 +122,7 @@ const Shop = () => {
                       key={category.id}
                       variant={selectedCategory === category.id ? "default" : "ghost"}
                       className="w-full justify-start"
-                      onClick={() => setSelectedCategory(category.id)}
+                      onClick={() => handleCategoryChange(category.id)}
                     >
                       {category.name}
                       <span className="ml-auto text-xs text-muted-foreground">
@@ -94,7 +142,13 @@ const Shop = () => {
             <div className="flex items-center justify-between mb-6">
               <p className="text-sm text-muted-foreground">
                 Showing {filteredProducts.length} products
+                {searchQuery && <span className="ml-1">for "{searchQuery}"</span>}
               </p>
+              {(searchQuery || selectedCategory !== "all") && (
+                <Button variant="link" onClick={clearFilters} className="text-primary">
+                  Clear filters
+                </Button>
+              )}
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -178,7 +232,8 @@ const Shop = () => {
                 <p className="text-lg text-muted-foreground">No products found matching your search.</p>
                 <Button 
                   variant="link" 
-                  onClick={() => { setSearchQuery(""); setSelectedCategory("all"); }}
+                  onClick={clearFilters}
+                  className="text-primary"
                 >
                   Clear filters
                 </Button>

@@ -5,14 +5,27 @@ import { ShoppingBag, Search, User, Menu, X } from "lucide-react";
 import { useCart } from "@/contexts/CartContext";
 import { useAuth } from "@/contexts/AuthContext";
 import { useState } from "react";
-import logo from "@/assets/logo.png";
+import { useNavigate } from "react-router-dom";
+import logo from "@/assets/logo.svg";
 
 const Header = () => {
   const { getItemCount } = useCart();
   const { user, isAdmin, signOut } = useAuth();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [customsNoticeOpen, setCustomsNoticeOpen] = useState(true);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [searchQuery, setSearchQuery] = useState("");
+  const navigate = useNavigate();
   const itemCount = getItemCount();
+
+  const handleSearch = (e: React.FormEvent) => {
+    e.preventDefault();
+    if (searchQuery.trim()) {
+      navigate(`/shop?search=${encodeURIComponent(searchQuery.trim())}`);
+      setSearchQuery("");
+      setSearchOpen(false);
+    }
+  };
 
   return (
     <header className="sticky top-0 z-50 w-full bg-background/95 backdrop-blur-sm">
@@ -79,12 +92,37 @@ const Header = () => {
 
           {/* Right - Icons */}
           <div className="flex items-center gap-1 flex-1 justify-end">
-            <Button variant="ghost" size="icon" className="hidden md:flex h-8 w-8">
-              <Search className="h-4 w-4" />
-            </Button>
-            <Button variant="ghost" size="icon" className="md:hidden h-8 w-8">
-              <Search className="h-4 w-4" />
-            </Button>
+            {/* Search */}
+            {searchOpen ? (
+              <form onSubmit={handleSearch} className="flex items-center">
+                <input
+                  type="text"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                  placeholder="Search..."
+                  className="w-32 md:w-48 h-8 px-3 text-sm border border-border rounded-md focus:outline-none focus:ring-1 focus:ring-primary"
+                  autoFocus
+                />
+                <Button 
+                  type="button" 
+                  variant="ghost" 
+                  size="icon" 
+                  className="h-8 w-8"
+                  onClick={() => setSearchOpen(false)}
+                >
+                  <X className="h-4 w-4" />
+                </Button>
+              </form>
+            ) : (
+              <Button 
+                variant="ghost" 
+                size="icon" 
+                className="h-8 w-8"
+                onClick={() => setSearchOpen(true)}
+              >
+                <Search className="h-4 w-4" />
+              </Button>
+            )}
             
             {user ? (
               <Button variant="ghost" size="icon" onClick={() => signOut()} title="Sign Out" className="h-8 w-8">
