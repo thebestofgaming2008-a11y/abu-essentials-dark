@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProductImage from "@/components/ui/product-image";
+import { formatPrice } from "@/lib/currency";
 
 const Shop = () => {
   const [searchParams, setSearchParams] = useSearchParams();
@@ -202,14 +203,14 @@ const Shop = () => {
                         {product.salePrice ? (
                           <>
                             <span className="text-lg font-bold text-primary">
-                              ${product.salePrice}
+                              {formatPrice(product.salePrice)}
                             </span>
                             <span className="text-sm line-through text-muted-foreground">
-                              ${product.price}
+                              {formatPrice(product.price)}
                             </span>
                           </>
                         ) : (
-                          <span className="text-lg font-bold">${product.price}</span>
+                          <span className="text-lg font-bold">{formatPrice(product.price)}</span>
                         )}
                       </div>
                     </div>

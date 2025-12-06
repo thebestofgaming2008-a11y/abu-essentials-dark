@@ -28,6 +28,7 @@ import Footer from "@/components/layout/Footer";
 import ProductImage from "@/components/ui/product-image";
 import { useRef, useState, useEffect } from "react";
 import heroBooks from "@/assets/hero-books.png";
+import { formatPrice } from "@/lib/currency";
 
 const Index = () => {
   const { addToCart } = useCart();
@@ -255,11 +256,11 @@ const Index = () => {
                   <div className="flex items-center gap-2 mb-3">
                     {product.salePrice ? (
                       <>
-                        <p className="text-lg font-bold text-primary">${product.salePrice}</p>
-                        <p className="text-sm text-muted-foreground line-through">${product.price}</p>
+                        <p className="text-lg font-bold text-primary">{formatPrice(product.salePrice)}</p>
+                        <p className="text-sm text-muted-foreground line-through">{formatPrice(product.price)}</p>
                       </>
                     ) : (
-                      <p className="text-lg font-bold">${product.price}</p>
+                      <p className="text-lg font-bold">{formatPrice(product.price)}</p>
                     )}
                   </div>
                   <Button 
@@ -354,7 +355,7 @@ const Index = () => {
                   <div className="p-5 md:w-3/5 flex flex-col justify-between">
                     <div>
                       <Badge className="mb-2 bg-destructive/90 text-destructive-foreground text-xs">
-                        Save ${(bundle.originalPrice - bundle.salePrice).toFixed(2)}
+                        Save {formatPrice(bundle.originalPrice - bundle.salePrice)}
                       </Badge>
                       <h3 className="text-lg font-bold mb-2">{bundle.name}</h3>
                       <p className="text-sm text-muted-foreground mb-3 line-clamp-2">{bundle.description}</p>
@@ -369,8 +370,8 @@ const Index = () => {
                     </div>
                     <div className="flex items-center justify-between">
                       <div className="flex items-center gap-2">
-                        <span className="text-xl font-bold text-primary">${bundle.salePrice}</span>
-                        <span className="text-sm text-muted-foreground line-through">${bundle.originalPrice}</span>
+                        <span className="text-xl font-bold text-primary">{formatPrice(bundle.salePrice)}</span>
+                        <span className="text-sm text-muted-foreground line-through">{formatPrice(bundle.originalPrice)}</span>
                       </div>
                       <Button size="sm" className="bg-primary text-primary-foreground hover:bg-primary/90">
                         View Bundle
@@ -434,11 +435,11 @@ const Index = () => {
                   <div className="flex items-center gap-2 mb-3">
                     {product.salePrice ? (
                       <>
-                        <p className="text-lg font-bold text-primary">${product.salePrice}</p>
-                        <p className="text-sm text-muted-foreground line-through">${product.price}</p>
+                        <p className="text-lg font-bold text-primary">{formatPrice(product.salePrice)}</p>
+                        <p className="text-sm text-muted-foreground line-through">{formatPrice(product.price)}</p>
                       </>
                     ) : (
-                      <p className="text-lg font-bold">${product.price}</p>
+                      <p className="text-lg font-bold">{formatPrice(product.price)}</p>
                     )}
                   </div>
                   <Button 
