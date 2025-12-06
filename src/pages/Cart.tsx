@@ -10,6 +10,7 @@ import { useCart } from "@/contexts/CartContext";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProductImage from "@/components/ui/product-image";
+import { formatPrice } from "@/lib/currency";
 
 const Cart = () => {
   const { items, removeFromCart, updateQuantity, getTotal } = useCart();
@@ -132,7 +133,7 @@ const Cart = () => {
                             </Button>
                           </div>
                           <p className="text-lg font-bold">
-                            ${((item.product.salePrice || item.product.price) * item.quantity).toFixed(2)}
+                            {formatPrice((item.product.salePrice || item.product.price) * item.quantity)}
                           </p>
                         </div>
                       </div>
@@ -152,18 +153,18 @@ const Cart = () => {
                   <div className="space-y-2">
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">Subtotal</span>
-                      <span className="font-medium">${subtotal.toFixed(2)}</span>
+                      <span className="font-medium">{formatPrice(subtotal)}</span>
                     </div>
                     <div className="flex justify-between text-sm">
                       <span className="text-muted-foreground">Shipping</span>
                       <span className="font-medium">
-                        {shipping === 0 ? "FREE" : `$${shipping.toFixed(2)}`}
+                        {shipping === 0 ? "FREE" : formatPrice(shipping)}
                       </span>
                     </div>
                     {discount > 0 && (
                       <div className="flex justify-between text-sm text-green-500">
                         <span>Discount</span>
-                        <span>-${discount.toFixed(2)}</span>
+                        <span>-{formatPrice(discount)}</span>
                       </div>
                     )}
                   </div>
@@ -172,12 +173,12 @@ const Cart = () => {
 
                   <div className="flex justify-between text-lg font-bold">
                     <span>Total</span>
-                    <span>${total.toFixed(2)}</span>
+                    <span>{formatPrice(total)}</span>
                   </div>
 
                   {subtotal < 100 && subtotal > 0 && (
                     <p className="text-xs text-muted-foreground">
-                      Add ${(100 - subtotal).toFixed(2)} more for free shipping!
+                      Add {formatPrice(100 - subtotal)} more for free shipping!
                     </p>
                   )}
 

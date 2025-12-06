@@ -11,6 +11,7 @@ import { useToast } from "@/hooks/use-toast";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import ProductImage from "@/components/ui/product-image";
+import { formatPrice } from "@/lib/currency";
 
 const ProductDetail = () => {
   const { id } = useParams();
@@ -153,17 +154,17 @@ const ProductDetail = () => {
                 {product.salePrice ? (
                   <>
                     <span className="text-3xl font-bold text-primary">
-                      ${product.salePrice}
+                      {formatPrice(product.salePrice)}
                     </span>
                     <span className="text-xl line-through text-muted-foreground">
-                      ${product.price}
+                      {formatPrice(product.price)}
                     </span>
                     <Badge variant="destructive">
-                      Save ${(product.price - product.salePrice).toFixed(2)}
+                      Save {formatPrice(product.price - product.salePrice)}
                     </Badge>
                   </>
                 ) : (
-                  <span className="text-3xl font-bold">${product.price}</span>
+                  <span className="text-3xl font-bold">{formatPrice(product.price)}</span>
                 )}
               </div>
             </div>
@@ -302,7 +303,7 @@ const ProductDetail = () => {
                       </h3>
                     </Link>
                     <p className="font-bold mt-1">
-                      ${relProduct.salePrice || relProduct.price}
+                      {formatPrice(relProduct.salePrice || relProduct.price)}
                     </p>
                   </CardContent>
                 </Card>

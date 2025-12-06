@@ -12,6 +12,7 @@ import { ArrowLeft, Loader2, CreditCard, ShoppingBag } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import { z } from 'zod';
+import { formatPrice } from '@/lib/currency';
 
 const checkoutSchema = z.object({
   name: z.string().min(1, 'Name is required').max(100, 'Name must be less than 100 characters'),
@@ -247,7 +248,7 @@ const Checkout = () => {
                     ) : (
                       <>
                         <CreditCard className="h-5 w-5 mr-2" />
-                        Pay ${total.toFixed(2)}
+                        Pay {formatPrice(total)}
                       </>
                     )}
                   </Button>
@@ -278,7 +279,7 @@ const Checkout = () => {
                     </div>
                     <div className="text-right">
                       <p className="font-medium">
-                        ${((item.product.salePrice || item.product.price) * item.quantity).toFixed(2)}
+                        {formatPrice((item.product.salePrice || item.product.price) * item.quantity)}
                       </p>
                     </div>
                   </div>
@@ -289,16 +290,16 @@ const Checkout = () => {
                 <div className="space-y-2">
                   <div className="flex justify-between text-sm">
                     <span>Subtotal</span>
-                    <span>${subtotal.toFixed(2)}</span>
+                    <span>{formatPrice(subtotal)}</span>
                   </div>
                   <div className="flex justify-between text-sm">
                     <span>Shipping</span>
-                    <span>{shipping === 0 ? 'FREE' : `$${shipping.toFixed(2)}`}</span>
+                    <span>{shipping === 0 ? 'FREE' : formatPrice(shipping)}</span>
                   </div>
                   <Separator />
                   <div className="flex justify-between font-bold text-lg">
                     <span>Total</span>
-                    <span className="text-primary">${total.toFixed(2)}</span>
+                    <span className="text-primary">{formatPrice(total)}</span>
                   </div>
                 </div>
               </CardContent>
